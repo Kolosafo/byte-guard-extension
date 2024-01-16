@@ -1,0 +1,1 @@
+Chrome Extension for our Byte Guard Project. A browser extension designed to give you control of your data privacy online. This is a project being built for NDPC's Code For Privacy Hackathon

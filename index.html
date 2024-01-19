@@ -3,11 +3,54 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="popup.js"></script>
+    <style>
+      .container {
+        width: 400px;
+        height: 600px;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+      }
+      .header-2 {
+        font-weight: 700;
+        font-size: 20px;
+        text-decoration: underline;
+        margin-bottom: 30px;
+      }
+      h1,
+      .header-2 {
+        align-self: center;
+        text-align: center;
+      }
+      .summary-span {
+        font-weight: 700;
+      }
+      .privacy-summary-cont,
+      .data-cont {
+        margin-bottom: 20px;
+        border: 2px solid red;
+      }
+      h1 {
+        color: chocolate;
+      }
+    </style>
   </head>
-  <body class="__className_e66fe9">
-    <div class="p-10">
-      <h1>Byte Guard Extension</h1>
-      <span>Extension loaded successfully</span>
+  <body class="__className_e66fe9" id="body">
+    <div class="container">
+      <h1>Byte Guard</h1>
+      <span class="header-2" id="privacy-summary-header"></span>
+      <div id="data-container" class="data-container">
+        <div class="privacy-summary-cont">
+          <span class="summary-span">Summary:</span>
+          <div id="privacy-summary-list-cont"></div>
+        </div>
+        <div class="data-cont">
+          <span class="summary-span">List of Data Collected:</span>
+          <div id="data-list-cont"></div>
+        </div>
+      </div>
+      <span id="loading"></span>
     </div>
   </body>
 </html>

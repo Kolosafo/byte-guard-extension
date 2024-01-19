@@ -17,6 +17,7 @@
     "storage",
     "activeTab",
     "tabs",
+    "notifications",
     "http://127.0.0.1:8000/*"
   ],
   "content_scripts": [

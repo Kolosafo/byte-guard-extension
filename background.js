@@ -1,3 +1,35 @@
+/* 
+BLOCK ALL URLS UNDER THE LIST LABELED HARMFUL TO CHILDREN
+This is for the child protection feature
+*/
+import { sitesToBlock } from "./utils/sitesToBlock.js";
+
+chrome.webNavigation.onBeforeNavigate.addListener((details) => {
+  chrome.storage.local.get(["isChecked"], function (status) {
+    console.log("CHECKBOXER", status.isChecked);
+    // BLOVK SITES ONLY WHEN CHECKED
+    if (status.isChecked) {
+      const blockedSiteFound = sitesToBlock.some((blockedSite) => {
+        return details.url.includes(blockedSite);
+      });
+
+      if (blockedSiteFound) {
+        console.log("BLOCKING!!");
+        chrome.tabs.update(details.tabId, {
+          url: "https://www.google.com",
+        });
+      }
+    }
+  });
+});
+
+/*
+
+
+PRIVACY POLICY AI SUMMARY FEATURE
+
+
+*/
 const filter = {
   url: [{ urlMatches: "https://www.google.com/" }],
 };

@@ -26,7 +26,7 @@ chrome.runtime.onMessage.addListener(async function (
   sender,
   sendResponse
 ) {
-  if (request.action === "extractPrivacyPolicy") {
+  if (request.action === "extractPrivacyPolicy" && !sendRequestOnce) {
     const privacyPolicyElement =
       document.querySelector('a[href*="privacy"]') ||
       document.querySelector('a[href*="terms"]');
@@ -39,7 +39,6 @@ chrome.runtime.onMessage.addListener(async function (
         policyUrl: privacyPolicyURL,
         sourceUrl: request.data,
       });
-
       // store response in local storage to persist state
       chrome.storage.local.set({ privacyPolicyData: response }, function () {
         console.log("Text data saved after API call", response);

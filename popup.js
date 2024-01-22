@@ -45,6 +45,7 @@ function updatePopupContent(data) {
 
 // GET STORED PRIVACY INFO
 window.onload = function () {
+  console.log("ON LOAD POPUP");
   const dataContainer = document.getElementById("data-container");
   const privacySiteHeader = document.getElementById("privacy-summary-header");
   chrome.runtime.onMessage.addListener(function (request) {
@@ -69,9 +70,7 @@ window.onload = function () {
 
       return domain;
     }
-    privacySiteHeader.textContent = `${getBaseDomain(
-      url1
-    )}'s privacy summary and User Data Collected`;
+    privacySiteHeader.textContent = `${getBaseDomain(url1)}`;
 
     // Extract base domains
     let baseDomain1 = getBaseDomain(url1);
